@@ -5,18 +5,16 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class InputNumbersTest {
 
-    private String CORRECT_INPUTS = "1 2 3";
-
-    @DisplayName("입력 문자열은 공백을 포함한 숫자만 입력 가능하다.")
-    @ParameterizedTest
-    @CsvSource(value = {"1 2 f", "1.3", "asd"})
+    @DisplayName("입력 문자는 숫자3개만 가능하다.")
+    @ParameterizedTest(name = "{displayName} input: \"{0}\"")
+    @ValueSource(strings = {"12f", "1.3", "asd"})
     void inputValidationCheck1(String numStr){
         assertThatThrownBy(() -> {
             new InputNumbers(numStr);
@@ -25,33 +23,21 @@ class InputNumbersTest {
     }
 
     @DisplayName("3개의 숫자가 입력되어야 한다.")
-    @Test
-    void inputSizeTest(){
-        InputNumbers inputNumbers = new InputNumbers(CORRECT_INPUTS);
-        assertThat(inputNumbers.size()).isEqualTo(3);
-    }
-
-    @DisplayName("숫자 1~9 사이의 값만 입력가능하다.")
-    @Test
-    void inputValidationCheck2(){
+    @ParameterizedTest(name = "{displayName} input: \"{0}\"")
+    @ValueSource(strings = {"1234", "12"})
+    void inputSizeTest(String numStr){
         assertThatThrownBy(() -> {
-            new InputNumbers("1 2 10");
-        }).withFailMessage(ErrorMessage.INPUT_NUMBER_ERROR.getMessage());
+            new InputNumbers(numStr);
+        }).withFailMessage(ErrorMessage.INPUT_LENGTH_ERROR.getMessage());
     }
 
     @DisplayName("서로 다른 숫자를 입력해야 한다.")
-    @Test
-    void inputValidationCheck3(){
-        InputNumbers inputNumbers = new InputNumbers(CORRECT_INPUTS);
-
-        BaseballNumber first = inputNumbers.number(0);
-        BaseballNumber second = inputNumbers.number(1);
-        BaseballNumber third = inputNumbers.number(2);
-
-        assertThat(first).isNotEqualTo(second);
-        assertThat(second).isNotEqualTo(third);
-        assertThat(third).isNotEqualTo(first);
-
+    @ParameterizedTest(name = "{displayName} input: \"{0}\"")
+    @CsvSource(value = {"111","121", "332"})
+    void inputValidationCheck3(String wrongInput){
+        assertThatThrownBy(() -> {
+            new InputNumbers(wrongInput);
+        }).withFailMessage(ErrorMessage.CANNOT_INPUT_SAME_NUMBER.getMessage());
     }
 
 }

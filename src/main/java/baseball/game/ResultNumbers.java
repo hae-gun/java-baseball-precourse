@@ -11,7 +11,7 @@ public class ResultNumbers {
     private final int MIN_NUM = 1;
     private final int MAX_NUM = 9;
 
-    private List<BaseballNumber> answers;
+    private List<BaseballNumber> answers = new ArrayList<>();
 
     public ResultNumbers(int startInclusive, int endInclusive){
         inputValidation(startInclusive, endInclusive);

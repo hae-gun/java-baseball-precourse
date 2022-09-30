@@ -29,6 +29,7 @@ class BaseballNumberTest {
     }
 
     @DisplayName("숫자 문자입력으로 생성 가능")
+    @Test
     void inputTest(){
         BaseballNumber baseballNumber = BaseballNumber.of("5");
         assertThat(baseballNumber.number()).isEqualTo(5);
