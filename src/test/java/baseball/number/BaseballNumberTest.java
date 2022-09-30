@@ -42,4 +42,12 @@ class BaseballNumberTest {
         BaseballNumber number2 = new BaseballNumber(1);
         assertThat(number1).isEqualTo(number2);
     }
+
+    @DisplayName("value 값이 같으면 두객체는 서로 같은 값이다.")
+    @Test
+    void equalsTest2(){
+        BaseballNumber number1 = BaseballNumber.of("1");
+        BaseballNumber number2 = BaseballNumber.of("1");
+        assertThat(number1).isEqualTo(number2);
+    }
 }
