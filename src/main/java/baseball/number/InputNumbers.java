@@ -52,4 +52,8 @@ public class InputNumbers {
                 "numbers=" + numbers +
                 '}';
     }
+
+    public List<BaseballNumber> numbers() {
+        return new ArrayList<>(numbers);
+    }
 }
