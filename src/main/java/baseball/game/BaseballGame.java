@@ -25,9 +25,7 @@ public class BaseballGame {
                 break;
             }
         }
-        if(status.equals(GameStatus.END)){
-            Output.print("게임 종료");
-        }
+        Output.print("게임 종료");
     }
 
     private void compareNumber(Computer computer) {
