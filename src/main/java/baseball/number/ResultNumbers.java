@@ -25,10 +25,6 @@ public class ResultNumbers {
         answers = new ArrayList<>(set);
     }
 
-    public List<BaseballNumber> numbers() {
-        return new ArrayList<>(answers);
-    }
-
     private void inputValidation(int start, int end){
         if(start < MIN_NUM || end < MIN_NUM || start > MAX_NUM || end > MAX_NUM){
             throw new IllegalArgumentException(ErrorMessage.INPUT_NUMBER_ERROR.getMessage());
@@ -45,6 +41,10 @@ public class ResultNumbers {
 
     public boolean contains(BaseballNumber number) {
         return this.answers.contains(number);
+    }
+
+    public List<BaseballNumber> numbers() {
+        return answers;
     }
 
     @Override
