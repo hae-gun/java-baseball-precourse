@@ -34,7 +34,7 @@ public class BaseballGame {
         while(!compare.isFinish()){
             String input = Input.inputNumber();
             this.player = new Player(input);
-            Output.print(compare.compare(player, computer));
+            Output.print(compare.compare(player.inputNumbers().numbers(), computer.resultNumbers().numbers()));
         }
     }
 
