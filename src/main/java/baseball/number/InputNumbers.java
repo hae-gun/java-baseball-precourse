@@ -12,21 +12,14 @@ public class InputNumbers {
 
     public InputNumbers(String numStr) {
         String[] arr = numStr.split(DELIMITER);
-        validation(arr);
         validationSize(arr);
+        validation(arr);
         for(String number : arr){
             numbers.add(BaseballNumber.of(number));
         }
     }
 
     private void validation(String[] arr) {
-        for(String str: arr){
-            try{
-                Integer.valueOf(str);
-            }catch (Exception e){
-                throw new IllegalArgumentException(ErrorMessage.IS_NOT_NUMBER.getMessage());
-            }
-        }
         if(arr[0].equals(arr[1]) || arr[1].equals(arr[2]) || arr[2].equals(arr[0])){
             throw new IllegalArgumentException(ErrorMessage.CANNOT_INPUT_SAME_NUMBER.getMessage());
         }
