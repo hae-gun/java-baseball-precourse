@@ -46,9 +46,9 @@ class ResultNumbersTest {
 
     @Test
     void 숫자_3개는_서로_다른숫자이다(){
-        int first = answer.numbers().get(0);
-        int second = answer.numbers().get(1);
-        int third = answer.numbers().get(2);
+        BaseballNumber first = answer.number(0);
+        BaseballNumber second = answer.number(1);
+        BaseballNumber third = answer.number(2);
 
         assertThat(first).isNotEqualTo(second);
         assertThat(second).isNotEqualTo(third);

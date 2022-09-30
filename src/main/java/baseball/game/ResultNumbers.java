@@ -10,14 +10,17 @@ public class ResultNumbers {
     private final int LIST_SIZE = 3;
     private final int MIN_NUM = 1;
     private final int MAX_NUM = 9;
-    private List<Integer> answers;
+
+    private List<BaseballNumber> answers;
 
     public ResultNumbers(int startInclusive, int endInclusive){
         inputValidation(startInclusive, endInclusive);
-        answers = Randoms.pickUniqueNumbersInRange(startInclusive, endInclusive, LIST_SIZE);
+        for(int number : Randoms.pickUniqueNumbersInRange(startInclusive, endInclusive, LIST_SIZE)){
+            answers.add(new BaseballNumber(number));
+        }
     }
 
-    public List<Integer> numbers() {
+    public List<BaseballNumber> numbers() {
         return new ArrayList<>(answers);
     }
 
@@ -31,4 +34,7 @@ public class ResultNumbers {
 
     }
 
+    public BaseballNumber number(int i) {
+        return this.numbers().get(i);
+    }
 }
