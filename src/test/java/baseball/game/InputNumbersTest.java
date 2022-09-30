@@ -44,9 +44,9 @@ class InputNumbersTest {
     void inputValidationCheck3(){
         InputNumbers inputNumbers = new InputNumbers(CORRECT_INPUTS);
 
-        int first = inputNumbers.first(0);
-        int second = inputNumbers.second(1);
-        int third = inputNumbers.third(2);
+        int first = inputNumbers.number(0);
+        int second = inputNumbers.number(1);
+        int third = inputNumbers.number(2);
 
         assertThat(first).isNotEqualTo(second);
         assertThat(second).isNotEqualTo(third);
