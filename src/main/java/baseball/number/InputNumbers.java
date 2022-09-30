@@ -45,4 +45,11 @@ public class InputNumbers {
     public BaseballNumber number(int i) {
         return this.numbers.get(i);
     }
+
+    @Override
+    public String toString() {
+        return "InputNumbers{" +
+                "numbers=" + numbers +
+                '}';
+    }
 }

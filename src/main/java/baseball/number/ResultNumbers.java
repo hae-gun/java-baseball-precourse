@@ -4,20 +4,25 @@ import baseball.common.error.ErrorMessage;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ResultNumbers {
     private final int LIST_SIZE = 3;
     private final int MIN_NUM = 1;
     private final int MAX_NUM = 9;
 
-    private List<BaseballNumber> answers = new ArrayList<>();
+    private List<BaseballNumber> answers;
 
     public ResultNumbers(int startInclusive, int endInclusive){
+
         inputValidation(startInclusive, endInclusive);
-        for(int number : Randoms.pickUniqueNumbersInRange(startInclusive, endInclusive, LIST_SIZE)){
-            answers.add(new BaseballNumber(number));
+        Set<BaseballNumber> set = new HashSet<>();
+        while(set.size() != LIST_SIZE){
+            set.add(new BaseballNumber(Randoms.pickNumberInRange(startInclusive, endInclusive)));
         }
+        answers = new ArrayList<>(set);
     }
 
     public List<BaseballNumber> numbers() {
@@ -35,6 +40,17 @@ public class ResultNumbers {
     }
 
     public BaseballNumber number(int i) {
-        return this.numbers().get(i);
+        return answers.get(i);
+    }
+
+    public boolean contains(BaseballNumber number) {
+        return this.answers.contains(number);
+    }
+
+    @Override
+    public String toString() {
+        return "ResultNumbers{" +
+                "answers=" + answers +
+                '}';
     }
 }
