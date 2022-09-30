@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.number;
 
 import baseball.common.error.ErrorMessage;
 

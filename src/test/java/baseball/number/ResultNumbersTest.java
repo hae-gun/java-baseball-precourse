@@ -1,6 +1,8 @@
-package baseball.game;
+package baseball.number;
 
 import baseball.common.error.ErrorMessage;
+import baseball.number.BaseballNumber;
+import baseball.number.ResultNumbers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
