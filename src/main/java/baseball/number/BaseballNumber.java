@@ -16,7 +16,12 @@ public class BaseballNumber {
     }
 
     public static BaseballNumber of (String value){
-        int input = Integer.valueOf(value);
+        int input;
+        try{
+            input= Integer.valueOf(value);
+        } catch (Exception e){
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_NUMBER.getMessage());
+        }
         return new BaseballNumber(input);
     }
 

@@ -50,4 +50,12 @@ class BaseballNumberTest {
         BaseballNumber number2 = BaseballNumber.of("1");
         assertThat(number1).isEqualTo(number2);
     }
+
+    @DisplayName("숫자가 아닌 값 입력")
+    @Test
+    void validationTest(){
+        assertThatThrownBy(() -> {
+            BaseballNumber.of("asd");
+        }).withFailMessage(ErrorMessage.IS_NOT_NUMBER.getMessage());
+    }
 }
