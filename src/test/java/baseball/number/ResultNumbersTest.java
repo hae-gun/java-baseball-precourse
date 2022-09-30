@@ -22,15 +22,6 @@ class ResultNumbersTest {
         answer = new ResultNumbers(startInclusive, endInclusive);
     }
 
-    @DisplayName("입력숫자 유효성 체크 테스트")
-    @ParameterizedTest(name ="{displayName}-{index} input: ({0},{1}) ")
-    @CsvSource(value = {"-1,9", "9,-1", "10,1", "1,10"}, delimiter = ',')
-    void inputValidationTest(int start, int end){
-        assertThatThrownBy(() -> {
-            new ResultNumbers(start, end);
-        }).withFailMessage(ErrorMessage.INPUT_NUMBER_ERROR.getMessage());
-    }
-
     @DisplayName("end 값은 항상 start 보다 커야한다.")
     @Test
     void inputValidationTest2(){
